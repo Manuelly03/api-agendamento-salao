@@ -8,6 +8,6 @@ const router = express.Router();
 
 router.get('/clientes', listarClientes);
 router.post('/clientes', criarCliente);
-
+router.get('/clientes/:id', buscarClientePorId);
 
 export default router;
