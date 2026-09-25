@@ -35,3 +35,13 @@ export function atualizarProfissional(req, res) {
 
 res.json(profissional);
 }
+export function excluirProfissional(req, res) {
+    const id = Number(req.params.id);
+    const indice = profissionais.findIndex(profissional => profissional.id === id);
+
+    if (indice === -1) {
+    return res.status(404).json({ mensagem: 'Profissional não encontrado' });
+}
+    profissionais.splice(indice, 1);
+    res.status(204).send();
+}
