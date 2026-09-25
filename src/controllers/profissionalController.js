@@ -23,3 +23,15 @@ export function buscarProfissionalPorId(req, res) {
 
  res.json(profissional);
 }
+export function atualizarProfissional(req, res) {
+    const id = Number(req.params.id);
+    const profissional = profissionais.find(profissional => profissional.id === id);
+
+    if (!profissional) {
+    return res.status(404).json({ mensagem: 'Profissional não encontrado' });
+}
+    profissional.nome = req.body.nome;
+    profissional.especialidade = req.body.especialidade;
+
+res.json(profissional);
+}
