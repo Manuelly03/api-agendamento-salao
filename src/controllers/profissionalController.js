@@ -12,3 +12,14 @@ export function criarProfissional(req, res) {
     profissionais.push(novoProfissional);
 res.status(201).json(novoProfissional);
 }
+
+export function buscarProfissionalPorId(req, res) {
+    const id = Number(req.params.id);
+    const profissional = profissionais.find(profissional => profissional.id === id);
+
+    if (!profissional) {
+    return res.status(404).json({ mensagem: 'Profissional não encontrado' });
+}
+
+ res.json(profissional);
+}
