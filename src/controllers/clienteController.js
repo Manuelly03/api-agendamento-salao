@@ -12,6 +12,19 @@ export function buscarClientePorId(req, res) {
     }
     res.json(cliente);
 }
+export function atualizarCliente(req, res) {
+    const id = Number(req.params.id);
+    const cliente = clientes.find(cliente => cliente.id === id);
+
+    if (!cliente) {
+        return res.status(404).json({ mensagem: 'Cliente não encontrado' });
+    }
+
+    cliente.nome = req.body.nome;
+    cliente.telefone = req.body.telefone;
+    cliente.email = req.body.email;
+    res.json(cliente);
+}
 export function criarCliente(req, res) {
     const novoCliente = {
         id: clientes.length + 1,
