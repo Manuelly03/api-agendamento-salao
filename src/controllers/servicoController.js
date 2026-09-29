@@ -5,12 +5,11 @@ export function listarServicos(req, res) {
 }
 export function criarServico(req, res) {
     const novoServico = {
-    id: servicos.length + 1,
-    nome: req.body.nome,
-    duracao: req.body.duracaoMinutos,
-    preco: req.body.preco
+        id: servicos.length + 1,
+        nome: req.body.nome,
+        duracaoMinutos: req.body.duracaoMinutos,
+        preco: req.body.preco
     };
-
     servicos.push(novoServico);
     res.status(201).json(novoServico);
 }
@@ -31,8 +30,8 @@ export function atualizarServico(req, res) {
     return res.status(404).json({ message: 'Serviço não encontrado!' });
 }
  servico.nome = req.body.nome;
- servico.duracao = req.body.duracaoMinutos;
- servico.preco = req.body.preco;
+servico.duracaoMinutos = req.body.duracaoMinutos;
+servico.preco = req.body.preco;
 
  res.json(servico);
 }
