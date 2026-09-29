@@ -3,7 +3,8 @@ import {
     listarAgendamentos,
     criarAgendamento,
     buscarAgendamentoPorId,
-    atualizarAgendamento
+    atualizarAgendamento,
+    excluirAgendamento
 } from '../controllers/agendamentoController.js';
 
 const router = express.Router();
@@ -12,5 +13,6 @@ router.get('/agendamentos', listarAgendamentos);
 router.post('/agendamentos', criarAgendamento);
 router.get('/agendamentos/:id', buscarAgendamentoPorId);
 router.put('/agendamentos/:id', atualizarAgendamento);
+router.delete('/agendamentos/:id', excluirAgendamento);
 
 export default router;
