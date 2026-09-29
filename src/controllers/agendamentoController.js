@@ -36,6 +36,18 @@ export function atualizarAgendamento(req, res) {
     agendamento.servicoId = req.body.servicoId;
     agendamento.inicio = req.body.inicio;
     agendamento.status = req.body.status;
-    
+
     res.json(agendamento);
+}
+export function excluirAgendamento(req, res) {
+    const id = Number(req.params.id);
+    const indice = agendamentos.findIndex(agendamento => agendamento.id === id);
+    if (indice === -1) {
+        return res.status(404).json({ mensagem: 'Agendamento não encontrado' });
+    }
+    agendamentos.splice(indice, 1); {
+    res.status(200).json({ mensagem: 'Agendamento excluído com sucesso' });
+}
+agendamentos.splice(indice, 1);
+    res.status(204).send();
 }
