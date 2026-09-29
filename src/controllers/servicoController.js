@@ -24,3 +24,16 @@ export function buscarServicoPorId(req, res) {
     }
     res.json(servico);
 }
+
+export function atualizarServico(req, res) {
+    const id = Number(req.params.id);
+    const servico = servicos.find(servico => servico.id === id);
+    if (!servico) {
+    return res.status(404).json({ message: 'Serviço não encontrado!' });
+}
+ servico.nome = req.body.nome;
+ servico.duracao = req.body.duracaoMinutos;
+ servico.preco = req.body.preco;
+
+ res.json(servico);
+}
