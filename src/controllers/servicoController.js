@@ -11,7 +11,6 @@ export function criarServico(req, res) {
     preco: req.body.preco
     };
 
-
     servicos.push(novoServico);
     res.status(201).json(novoServico);
 }
@@ -36,4 +35,13 @@ export function atualizarServico(req, res) {
  servico.preco = req.body.preco;
 
  res.json(servico);
+}
+export function excluirServico(req, res) {
+    const id = Number(req.params.id);
+    const indice = servicos.findIndex(servico => servico.id === id);
+    if (indice === -1) {
+        return res.status(404).json({ message: 'Serviço não encontrado!' });
+    }
+    servicos.splice(indice, 1);
+    res.status(204).send();
 }
