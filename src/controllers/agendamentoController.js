@@ -1,18 +1,61 @@
 import agendamentos from '../data/agendamentos.js';
-import clientes from '../data/clientes.js';
+import servicos from '../data/servicos.js';
 
 export function listarAgendamentos(req, res) {
     res.json(agendamentos);
 }
-
 export function criarAgendamento(req, res) {
+    const clienteId = Number(req.body.clienteId);
+    const profissionalId = Number(req.body.profissionalId);
+    const servicoId = Number(req.body.servicoId);
+
+    const servico = servicos.find(servico => servico.id === servicoId);
+
+    if (!servico) {
+        return res.status(400).json({
+            mensagem: 'Serviço não encontrado'
+        });
+    }
+
+    const novoInicio = new Date(req.body.inicio);
+
+    const novoFim = new Date(
+        novoInicio.getTime() + servico.duracaoMinutos * 60000
+    );
+
+    const conflito = agendamentos.some(agendamento => {
+        if (
+            Number(agendamento.profissionalId) !== profissionalId ||
+            agendamento.status !== 'agendado'
+        ) {
+            return false;
+        }
+
+        const servicoExistente = servicos.find(
+            servico => servico.id === Number(agendamento.servicoId)
+        );
+        if (!servicoExistente) {
+            return false;
+        }
+        const inicioExistente = new Date(agendamento.inicio);
+        const fimExistente = new Date(
+            inicioExistente.getTime() +
+            servicoExistente.duracaoMinutos * 60000
+        );
+   return novoInicio < fimExistente && novoFim > inicioExistente;
+    });
+    if (conflito) {
+    return res.status(409).json({
+    mensagem: 'Profissional já possui um agendamento nesse horário'
+        });
+    }
     const novoAgendamento = {
-        id: agendamentos.length + 1,
-        clienteId: req.body.clienteId,
-        profissionalId: req.body.profissionalId,
-        servicoId: req.body.servicoId,
-        inicio: req.body.inicio,
-        status: 'agendado',
+    id: agendamentos.length + 1,
+    clienteId,
+    profissionalId,
+    servicoId,
+    inicio: req.body.inicio,
+    status: 'agendado'
     };
     agendamentos.push(novoAgendamento);
     res.status(201).json(novoAgendamento);
@@ -46,9 +89,6 @@ export function excluirAgendamento(req, res) {
     if (indice === -1) {
         return res.status(404).json({ mensagem: 'Agendamento não encontrado' });
     }
-    agendamentos.splice(indice, 1); {
-    res.status(200).json({ mensagem: 'Agendamento excluído com sucesso' });
-}
 agendamentos.splice(indice, 1);
     res.status(204).send();
 }
