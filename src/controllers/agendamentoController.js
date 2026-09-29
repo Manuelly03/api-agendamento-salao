@@ -24,3 +24,18 @@ export function buscarAgendamentoPorId(req, res) {
     }
     res.json(agendamento);
 }
+
+export function atualizarAgendamento(req, res) {
+    const id = Number(req.params.id);
+    const agendamento = agendamentos.find(agendamento => agendamento.id === id);
+    if (!agendamento) {
+        return res.status(404).json({ mensagem: 'Agendamento não encontrado' });
+    }
+    agendamento.clienteId = req.body.clienteId;
+    agendamento.profissionalId = req.body.profissionalId;
+    agendamento.servicoId = req.body.servicoId;
+    agendamento.inicio = req.body.inicio;
+    agendamento.status = req.body.status;
+    
+    res.json(agendamento);
+}
