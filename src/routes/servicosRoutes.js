@@ -1,10 +1,12 @@
 import express from 'express';
 import {
-     listarServicos 
+     listarServicos,
+     criarServico
 } from '../controllers/servicoController.js';
 
 const router = express.Router();
 
 router.get('/servicos', listarServicos);
+router.post('/servicos', criarServico);
 
 export default router;
