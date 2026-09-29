@@ -16,3 +16,11 @@ export function criarAgendamento(req, res) {
     agendamentos.push(novoAgendamento);
     res.status(201).json(novoAgendamento);
 }
+export function buscarAgendamentoPorId(req, res) {
+    const id = Number(req.params.id);
+    const agendamento = agendamentos.find(agendamento => agendamento.id === id);
+    if (!agendamento) {
+        return res.status(404).json({ mensagem: 'Agendamento não encontrado' });
+    }
+    res.json(agendamento);
+}
