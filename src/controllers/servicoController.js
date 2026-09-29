@@ -11,7 +11,16 @@ export function criarServico(req, res) {
     preco: req.body.preco
     };
 
-    
+
     servicos.push(novoServico);
     res.status(201).json(novoServico);
+}
+
+export function buscarServicoPorId(req, res) {
+    const id = Number(req.params.id);
+    const servico = servicos.find(servico => servico.id === id);
+    if (!servico) {
+        return res.status(404).json({ message: 'Serviço não encontrado!' });
+    }
+    res.json(servico);
 }
