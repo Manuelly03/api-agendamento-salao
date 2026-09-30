@@ -1,7 +1,8 @@
 {
   "name": "api-salaoptas",
   "version": "1.0.0",
-  "description": "",
+  "description": "Texto provisório da branch de cancelamento",
+
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js"
