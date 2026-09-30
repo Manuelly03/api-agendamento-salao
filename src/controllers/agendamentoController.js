@@ -92,3 +92,23 @@ export function excluirAgendamento(req, res) {
 agendamentos.splice(indice, 1);
     res.status(204).send();
 }
+
+export function cancelarAgendamento(req, res) {
+    const id = Number(req.params.id);
+
+    const agendamento = agendamentos.find(
+        agendamento => agendamento.id === id);
+    if (!agendamento) {
+        return res.status(404).json({ mensagem: 'Agendamento não encontrado'});
+    }
+    const inicioAgendamento = new Date(agendamento.inicio);
+    const agora = new Date();
+
+    const diferencaHoras =
+        (inicioAgendamento - agora) / (1000 * 60 * 60);
+    if (diferencaHoras < 2) {
+      return res.status(400).json({mensagem: 'O agendamento só pode ser cancelado com pelo menos 2 horas de antecedência'});
+    }
+    agendamento.status = 'cancelado';
+    res.json(agendamento);
+}
