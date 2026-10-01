@@ -27,3 +27,23 @@ A API possui quatro recursos principais:
 -Profissionais
 -Serviços
 -Agendamentos
+
+## Endpoints
+### Clientes
+
+| Método | Endpoint | Descrição |
+|---|---|---|
+| GET | `/clientes` | Lista todos os clientes |
+| GET | `/clientes/:id` | Busca um cliente pelo ID |
+| POST | `/clientes` | Cadastra um cliente |
+| PUT | `/clientes/:id` | Atualiza um cliente |
+| DELETE | `/clientes/:id` | Exclui um cliente |
+
+### Profissionais
+| Método | Endpoint | Descrição |
+|---|---|---|
+| GET | `/profissionais` | Lista todos os profissionais |
+| GET | `/profissionais/:id` | Busca um profissional pelo ID |
+| POST | `/profissionais` | Cadastra um profissional |
+| PUT | `/profissionais/:id` | Atualiza um profissional |
+| DELETE | `/profissionais/:id` | Exclui um profissional |
