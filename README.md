@@ -97,3 +97,28 @@ Criar agendamento
  "inicio": "2026-09-30T14:00:00-04:00"
 }
 
+## Regras de negócio
+### 1. Conflito de horário
+
+Um profissional não pode possuir dois agendamentos que aconteçam no mesmo período.
+
+A duração do serviço é considerada para verificar se existe conflito de horário.
+
+Por exemplo, se um serviço começa às 14:00 e possui duração de 60 minutos, ele termina às 15:00. Outro agendamento do mesmo profissional que comece antes das 15:00 será considerado conflitante.
+
+### 2. Cancelamento de agendamento
+
+O cancelamento de um agendamento deve respeitar o prazo mínimo definido pelo sistema.
+
+## Organização do projeto
+```text
+src/
+├── controllers/
+├── routes/
+├── data/
+├── services/
+├── app.js
+└── server.js
+Armazenamento dos dados
+Os dados são armazenados temporariamente em memória.
+Isso significa que os registros são perdidos quando o servidor é reiniciado.
