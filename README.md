@@ -17,3 +17,13 @@ Primeiro, instale as dependências:
 ```bash
 npm install
 
+O servidor será iniciado em:
+http://localhost:3000
+
+Recursos da API
+A API possui quatro recursos principais:
+
+-Clientes
+-Profissionais
+-Serviços
+-Agendamentos
