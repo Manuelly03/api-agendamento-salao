@@ -20,7 +20,7 @@ npm install
 O servidor será iniciado em:
 http://localhost:3000
 
-Recursos da API
+## Recursos da API
 A API possui quatro recursos principais:
 
 -Clientes
@@ -110,14 +110,17 @@ Por exemplo, se um serviço começa às 14:00 e possui duração de 60 minutos, 
 
 O cancelamento de um agendamento deve respeitar o prazo mínimo definido pelo sistema.
 
-##Organização do projeto
+## Organização do projeto
+
+```text
 src/
 ├── controllers/
 ├── data/
 ├── routes/
 └── server.js
+```
 
-Armazenamento dos dados
+## Armazenamento dos dados
 Os dados são armazenados temporariamente em memória.
 Isso significa que os registros são perdidos quando o servidor é reiniciado.
 
@@ -128,5 +131,5 @@ npm start
 
 A API pode ser utilizada com ferramentas como Postman, Insomnia ou Thunder Client.
 
-Status do projeto:
+## Status do projeto
 Projeto desenvolvido para a disciplina de Programação e Técnicas para Aplicações Servidor 3.
