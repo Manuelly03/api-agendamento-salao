@@ -110,15 +110,13 @@ Por exemplo, se um serviço começa às 14:00 e possui duração de 60 minutos, 
 
 O cancelamento de um agendamento deve respeitar o prazo mínimo definido pelo sistema.
 
-## Organização do projeto
-```text
+##Organização do projeto
 src/
 ├── controllers/
-├── routes/
 ├── data/
-├── services/
-├── app.js
+├── routes/
 └── server.js
+
 Armazenamento dos dados
 Os dados são armazenados temporariamente em memória.
 Isso significa que os registros são perdidos quando o servidor é reiniciado.
