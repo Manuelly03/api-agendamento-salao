@@ -4,7 +4,15 @@
   "description": "Texto rival feito na master",
   "main": "index.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:up": "docker start agendamento-salao || docker run -d --name agendamento-salao -p 127.0.0.1 : 27017 -v agendamento-salao-data:/data/db mongo:8",
+    "db:down": "docker stop agendamento-salao",
+    "db:logs": "docker logs -f agendamento-salao",
+    "db:reset": "docker rm -f agendamento-salao; docker volume rm agendamento-salao-data",
+    "predev": "npm run db:up",
+    "dev": "node --watch src/server.js",
     "start": "node src/server.js"
+
   },
   "keywords": [],
   "author": "",

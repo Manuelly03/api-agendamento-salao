@@ -4,6 +4,7 @@ API REST desenvolvida em JavaScript com Express.js para realizar o gerenciamento
 ## Integrantes
 - Manuelly Fernandes
 - Dheroly
+- Mayara
 
 ## Tecnologias utilizadas
 - JavaScript
